@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { ToDoList } from './ToDoList';
+import { Form } from './Form';
+import { listArray } from './component/listArray';
 
 function App() {
+  const [list, setList] = useState(listArray);
+
+  // 入力値を配列に追加
+  const addList = (text) => {
+    setList([...list, text]);
+  }
+
+  const deleteList = (index) => {
+    console.log(index);
+    const delList = [...list];
+    delList.splice(index,1);
+    setList(delList);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* FromにaddList()渡す */}
+      <Form addList={ addList }/>
+      {/* ToDoListに配列(list)を渡す */}
+      <ToDoList list={ list } deleteList={ deleteList }/>
     </div>
   );
 }
