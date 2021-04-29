@@ -1,0 +1,1 @@
+export const listArray = ['公園に行く','マチュピチュに行く'];
