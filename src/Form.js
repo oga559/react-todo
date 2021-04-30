@@ -15,11 +15,12 @@ export const Form = ({ addList }) => {
 
     return (
         <div>
-            <h2>ToDOアプリ</h2>
+            <h1>ToDOアプリ</h1>
+            <h4>やることを登録しよう</h4>
             <form onSubmit={ formSubmit }>
                 <div>
                      {/* ReactではvalueやonChangeを使ってinputの値を反映  */}
-                    <input type="text" value={ text } onChange={(e) => setText(e.target.value)} required/>
+                    <input type="text" value={ text } onChange={(e) => setText(e.target.value)} required placeholder="やることを登録"/>
                 </div>
                 <div>
                     <button>登録</button>
