@@ -1,4 +1,4 @@
-export const ToDoList = ({ list,deleteList }) => {
+export const ToDoList = ({ list,deleteList,modalShow }) => {
     return(
         <div>
             {
@@ -6,10 +6,11 @@ export const ToDoList = ({ list,deleteList }) => {
                     return (
                         <div key={ index }>
                             <li>{ list }</li>
+                            <button onClick={() => modalShow(index)}>更新</button>
                             <button onClick={() => deleteList(index)}>削除</button>
                             <hr/>
                         </div>
-                    )
+                        )
                 })
             }
         </div>
