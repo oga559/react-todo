@@ -8,12 +8,14 @@ function App() {
   const [list, setList] = useState(listArray);
   const [show, setShow] = useState(false);
   const [number, setNumber] = useState('');
+  const [editList, setEditList] = useState('');
 
-  // 入力値を配列に追加
+  // 追加処理
   const addList = (text) => {
     setList([...list, text]);
   }
 
+  //削除処理
   const deleteList = (index) => {
     console.log(index);
     const delList = [...list];
@@ -21,18 +23,24 @@ function App() {
     setList(delList);
   }
 
+  //更新処理
   const updateList = (index,update) => {
-    console.log(index);
-    console.log(update);
+    //キーで指定して配列の値を更新
     list[index] = update;
+    //値を変更
     setList(list);
   }
 
+  //モーダル表示
   const modalShow = (index) => {
+    //モーダル表示にための値変更
     setShow(true);
+    //配列のキーを取得
     setNumber(index);
+    setEditList(list[index]);
   }
 
+  //モーダルを閉じる
   const modalClose = () => {
     setShow(false);
   }
@@ -43,7 +51,7 @@ function App() {
       <Form addList={ addList }/>
       {/* ToDoListに配列(list)を渡す */}
       <ToDoList list={ list } deleteList={ deleteList } modalShow={ modalShow }/>
-      <Modal show={ show } list={ list } modalClose={ modalClose } number={ number } updateList={ updateList }/>
+      <Modal show={ show } editList={ editList } modalClose={ modalClose } number={ number } updateList={ updateList }/>
     </div>
   );
 }

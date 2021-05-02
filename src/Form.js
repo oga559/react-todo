@@ -1,4 +1,21 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+    text-align: center;
+    margin: 0 auto;
+    width: 30%;
+`
+
+const Button = styled.button`
+    margin: 10px 5px 0px 10px;
+	padding: 0.8em;
+	color: white;
+	background: dodgerblue;
+    width: 80px;
+	border:1px solid white;
+    cursor: pointer;
+`
 
 export const Form = ({ addList }) => {
     const [text, setText] = useState('');
@@ -14,19 +31,18 @@ export const Form = ({ addList }) => {
     }
 
     return (
-        <div>
-            <h1>ToDOアプリ</h1>
-            <h4>やることを登録しよう</h4>
+        <Container>
+            <h1>ToDo Application</h1>
             <form onSubmit={ formSubmit }>
                 <div>
                      {/* ReactではvalueやonChangeを使ってinputの値を反映  */}
-                    <input type="text" value={ text } onChange={(e) => setText(e.target.value)} required placeholder="やることを登録"/>
+                    <input type="text" value={ text } onChange={(e) => setText(e.target.value)} required placeholder="To Do Add"/>
                 </div>
                 <div>
-                    <button>登録</button>
+                    <Button>Add</Button>
                 </div>
                 <hr/>
             </form>
-        </div>
+        </Container>
     )
 }
